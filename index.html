@@ -108,10 +108,14 @@ dd{margin:2px 0 0;color:#363a72}
 .media.one{grid-template-columns:1fr}
 figure{margin:0}
 .vid{position:relative;border-radius:6px;overflow:hidden;background:#e9e2d8}
-.vid video{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.vid video{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:var(--pos,50% 50%)}
+.vid.playing video{object-fit:contain;background:#000}
 .media.one .vid video{aspect-ratio:var(--ar)}
 @media(max-width:859px){.swap-body .media{order:-1}}
-.vid button{position:absolute;right:8px;bottom:8px;border:0;border-radius:999px;background:rgba(28,30,92,.82);color:#fff;font:600 .8rem Archivo,sans-serif;padding:7px 11px;cursor:pointer}
+.vid .play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border:0;border-radius:50%;background:rgba(28,30,92,.86);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.vid .play::before{content:"";width:0;height:0;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff;margin-left:5px}
+.vid .play:hover{background:var(--brand)}
+.vid.playing .play{display:none}
 figcaption{font-size:.88rem;color:var(--muted);margin-top:6px;line-height:1.35}
 
 /* ---------- prevenir ---------- */
@@ -203,7 +207,7 @@ footer img{height:24px;width:auto}
     <div class="swap-head">
       <div class="from-to"><span class="from">Cinta plástica</span><span class="arrow" aria-hidden="true">por</span><span class="to">Cinta de papel activada por agua</span></div>
       <h3 id="t-cinta">Una tira que se vuelve parte de la caja</h3>
-      <p class="intro">La cinta Venom es papel kraft con adhesivo a base de almidón y una trama de refuerzo de fibra de vidrio y poliéster. El agua activa el adhesivo, que penetra en la fibra del cartón: la cinta y la caja quedan fundidas. Por eso alcanza con una sola tira donde antes había varias vueltas de plástico.</p>
+      <p class="intro">La cinta Ventapel es papel engomado: papel kraft con adhesivo a base de almidón y una trama de refuerzo de fibra de vidrio y poliéster. El agua activa el adhesivo, que penetra en la fibra del cartón: la cinta y la caja quedan fundidas. Por eso alcanza con una sola tira donde antes había varias vueltas de plástico.</p>
     </div>
     <div class="swap-body">
       <div class="cols">
@@ -211,7 +215,7 @@ footer img{height:24px;width:auto}
           <div><dt>Se recicla con la caja</dt><dd>No hay que despegarla: según el fabricante, las fibras de la cinta se reciclan junto con el cartón. La versión sin refuerzo pasó el protocolo de equivalencia OCC de Western Michigan University.</dd></div>
           <div><dt>Deja evidencia si la abren</dt><dd>No se despega sin romper la fibra. Menos violaciones y robos significa menos reenvíos, y cada reenvío es otra caja, otro relleno y otro viaje.</dd></div>
           <div><dt>Se instala sin frenar la línea</dt><dd>Dispensadores manuales y eléctricos para estaciones de trabajo, y selladoras automáticas para líneas de alto volumen.</dd></div>
-          <div><dt>Certificación</dt><dd>La línea de cintas kraft activadas por agua de IPG tiene certificación Cradle to Cradle Certified® Bronze y se fabrica con 100% de electricidad renovable. <a href="https://www.itape.com/c2c" target="_blank" rel="noopener">Ver en itape.com</a></dd></div>
+          <div><dt>Certificación</dt><dd>Nuestra cinta de papel engomado, fabricada por IPG, tiene certificación Cradle to Cradle Certified® Bronze y se produce con 100% de electricidad renovable. <a href="https://www.itape.com/c2c" target="_blank" rel="noopener">Ver en itape.com</a></dd></div>
         </dl>
         <div class="signals"><strong>Cuándo sugerirla</strong>
           <ul>
@@ -222,10 +226,10 @@ footer img{height:24px;width:auto}
         </div>
       </div>
       <div class="media">
-        <figure><div class="vid" style="--ar:356/860"><video muted playsinline loop preload="none" poster="/media/inviolable.jpg" aria-label="Intento de abrir una caja cerrada con cinta de papel"><source src="/media/inviolable.mp4" type="video/mp4"></video></div><figcaption>Intento de abrirla: la fibra se rompe y queda la marca.</figcaption></figure>
-        <figure><div class="vid" style="--ar:544/960"><video muted playsinline loop preload="none" poster="/media/wat-vs-poli.jpg" aria-label="Test de resistencia: cinta de papel contra cinta plástica"><source src="/media/wat-vs-poli.mp4" type="video/mp4"></video></div><figcaption>Test de resistencia en la apertura: papel contra plástico.</figcaption></figure>
-        <figure><div class="vid" style="--ar:640/352"><video muted playsinline loop preload="none" poster="/media/h2o.jpg" aria-label="Selladora automática que cierra cajas con cinta de papel"><source src="/media/h2o.mp4" type="video/mp4"></video></div><figcaption>Selladora automática con cinta de papel.</figcaption></figure>
-        <figure><div class="vid" style="--ar:478/850"><video muted playsinline loop preload="none" poster="/media/linea.jpg" aria-label="Línea de despacho de un operador logístico cerrando cajas con cinta de papel"><source src="/media/linea.mp4" type="video/mp4"></video></div><figcaption>Dispensadores en la línea de un operador logístico.</figcaption></figure>
+        <figure><div class="vid" style="--ar:356/860"><video playsinline preload="none" poster="/media/inviolable.jpg" aria-label="Intento de abrir una caja cerrada con cinta de papel"><source src="/media/inviolable.mp4" type="video/mp4"></video></div><figcaption>Intento de abrirla: la fibra se rompe y queda la marca.</figcaption></figure>
+        <figure><div class="vid" style="--ar:544/960"><video playsinline preload="none" poster="/media/wat-vs-poli.jpg" aria-label="Test de resistencia: cinta de papel contra cinta plástica"><source src="/media/wat-vs-poli.mp4" type="video/mp4"></video></div><figcaption>Test de resistencia en la apertura: papel contra plástico.</figcaption></figure>
+        <figure><div class="vid" style="--ar:640/352"><video playsinline preload="none" poster="/media/h2o.jpg" aria-label="Selladora automática que cierra cajas con cinta de papel"><source src="/media/h2o.mp4" type="video/mp4"></video></div><figcaption>Selladora automática con cinta de papel.</figcaption></figure>
+        <figure><div class="vid" style="--ar:478/850"><video playsinline preload="none" poster="/media/linea.jpg" aria-label="Línea de despacho de un operador logístico cerrando cajas con cinta de papel"><source src="/media/linea.mp4" type="video/mp4"></video></div><figcaption>Dispensadores en la línea de un operador logístico.</figcaption></figure>
       </div>
     </div>
   </article>
@@ -253,8 +257,8 @@ footer img{height:24px;width:auto}
         </div>
       </div>
       <div class="media">
-        <figure><div class="vid" style="--ar:540/960"><video muted playsinline loop preload="none" poster="/media/zfill.jpg" aria-label="Relleno de papel cayendo dentro de una caja"><source src="/media/zfill.mp4" type="video/mp4"></video></div><figcaption>Relleno de papel directo a la caja.</figcaption></figure>
-        <figure><div class="vid" style="--ar:848/478"><video muted playsinline loop preload="none" poster="/media/coiler.jpg" aria-label="Máquina que convierte papel en relleno"><source src="/media/coiler.mp4" type="video/mp4"></video></div><figcaption>El papel se convierte en relleno en la estación.</figcaption></figure>
+        <figure><div class="vid" style="--ar:540/960"><video playsinline preload="none" poster="/media/zfill.jpg" aria-label="Relleno de papel cayendo dentro de una caja"><source src="/media/zfill.mp4" type="video/mp4"></video></div><figcaption>Relleno de papel directo a la caja.</figcaption></figure>
+        <figure><div class="vid" style="--pos:28% 50%"><video playsinline preload="none" poster="/media/relleno-linea.jpg" aria-label="Máquina de relleno de papel en una línea de e-commerce"><source src="/media/relleno-linea.mp4" type="video/mp4"></video></div><figcaption>Relleno de papel en una línea de e-commerce de cosmética.</figcaption></figure>
       </div>
     </div>
   </article>
@@ -278,8 +282,9 @@ footer img{height:24px;width:auto}
           </ul>
         </div>
       </div>
-      <div class="media one">
-        <figure><div class="vid" style="--ar:848/614"><video muted playsinline loop preload="none" poster="/media/ecombag.jpg" aria-label="Sobre de papel cargado con una pesa de 18 kg"><source src="/media/ecombag.mp4" type="video/mp4"></video></div><figcaption>Prueba de carga: el sobre de papel con una pesa de 18 kg.</figcaption></figure>
+      <div class="media">
+        <figure><div class="vid" style="--ar:848/614"><video playsinline preload="none" poster="/media/ecombag.jpg" aria-label="Sobre de papel cargado con una pesa de 18 kg"><source src="/media/ecombag.mp4" type="video/mp4"></video></div><figcaption>Prueba de carga: el sobre de papel con una pesa de 18 kg.</figcaption></figure>
+        <figure><div class="vid"><video playsinline preload="none" poster="/media/sobre-envio.jpg" aria-label="Sobre de papel antes y después de un envío real"><source src="/media/sobre-envio.mp4" type="video/mp4"></video></div><figcaption>El mismo sobre, después de un envío real.</figcaption></figure>
       </div>
     </div>
   </article>
@@ -382,27 +387,25 @@ footer img{height:24px;width:auto}
 
 <script>
 (function(){
-  // Videos: reproducen en silencio cuando están a la vista; botón para el sonido.
+  // Videos: arrancan solo cuando la persona toca play.
   var vids=[].slice.call(document.querySelectorAll('.vid video'));
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   vids.forEach(function(v){
-    var b=document.createElement('button');b.type='button';b.textContent=reduce?'Reproducir':'Activar sonido';
-    v.parentNode.appendChild(b);
+    var box=v.parentNode, b=document.createElement('button');
+    b.type='button';b.className='play';b.setAttribute('aria-label','Reproducir: '+(v.getAttribute('aria-label')||'video'));
+    box.appendChild(b);
     b.addEventListener('click',function(){
-      if(v.paused){v.play();}
-      if(reduce&&b.textContent==='Reproducir'){b.textContent='Activar sonido';return;}
-      v.muted=!v.muted;b.textContent=v.muted?'Activar sonido':'Silenciar';
-      if(!v.muted){vids.forEach(function(o){if(o!==v){o.muted=true;var ob=o.parentNode.querySelector('button');if(ob&&ob.textContent==='Silenciar')ob.textContent='Activar sonido';}});}
+      vids.forEach(function(o){if(o!==v&&!o.paused)o.pause();});
+      box.classList.add('playing');v.controls=true;
+      var p=v.play();if(p&&p.catch)p.catch(function(){});
+      if(window.va)window.va('event',{name:'video',data:{video:(v.currentSrc||'').split('/').pop()}});
     });
+    v.addEventListener('play',function(){vids.forEach(function(o){if(o!==v&&!o.paused)o.pause();});});
+    v.addEventListener('ended',function(){box.classList.remove('playing');v.controls=false;v.load();});
   });
-  if(!reduce&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.45});
-    vids.forEach(function(v){io.observe(v);});
-  }
 
   // Diagnóstico rápido
   var A={
-    cinta:['Cinta de papel activada por agua','Una sola tira de cinta Venom reemplaza las vueltas de cinta plástica, y la caja se recicla sin despegar nada.','#t-cinta'],
+    cinta:['Cinta de papel activada por agua','Una sola tira de cinta Ventapel de papel engomado reemplaza las vueltas de cinta plástica, y la caja se recicla sin despegar nada.','#t-cinta'],
     robo:['Cinta de papel activada por agua','La cinta de papel no se despega sin romper la fibra: cualquier apertura queda a la vista. Menos violaciones, menos reenvíos.','#t-cinta'],
     aire:['Relleno de papel a demanda','Una máquina e-comfill en la estación genera el relleno de papel en el momento. Para frágiles, el papel en panal reemplaza al burbuja.','#t-relleno'],
     vacio:['Relleno a medida y caja más chica','Antes que rellenar, conviene revisar el tamaño de caja. El papel en panal protege con menos volumen, y lo que queda vacío se completa con papel dosificado.','#t-relleno'],
