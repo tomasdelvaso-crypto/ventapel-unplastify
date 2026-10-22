@@ -4,174 +4,123 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ventapel para Unplastify</title>
-<meta name="description" content="El plástico que nadie mide está en el final de la línea. Qué hace Ventapel para sacar el plástico de la cinta, el relleno y el sobre de envío.">
+<meta name="description" content="Cinta, relleno y sobre: el plástico del final de línea tiene reemplazo de papel. Qué hace Ventapel y cómo trabajar juntos.">
 <meta property="og:title" content="El plástico que nadie mide está en el final de la línea">
-<meta property="og:description" content="Una guía corta de Ventapel para el equipo de Unplastify.">
+<meta property="og:description" content="Cinta, relleno y sobre de papel, probados en la línea del cliente. Para el equipo de Unplastify.">
 <meta property="og:image" content="https://ventapel-unplastify.vercel.app/media/og.jpg">
 <meta property="og:url" content="https://ventapel-unplastify.vercel.app/">
 <meta property="og:type" content="website">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#14164a">
 <link rel="icon" href="/media/favicon.png">
-<link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/roboto-flex-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:Archivo;font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(/fonts/archivo-latin-wdth-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Archivo;font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(/fonts/archivo-latin-ext-wdth-normal.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113}
+@font-face{font-family:Inter;font-style:normal;font-display:swap;font-weight:100 900;src:url(/fonts/inter-latin-wght-normal.woff2) format("woff2-variations")}
+@font-face{font-family:"Roboto Flex";font-style:normal;font-display:swap;font-weight:100 1000;src:url(/fonts/roboto-flex-latin-wght-normal.woff2) format("woff2-variations")}
 :root{
-  --ink:#1c1e5c;        /* texto, índigo profundo */
-  --brand:#2e3192;      /* índigo Ventapel */
-  --kraft:#c99c68;      /* cinta de papel */
-  --kraft-deep:#8a6238; /* cartón corrugado, texto sobre kraft */
-  --paper:#ffffff;
-  --film:#e8eef4;       /* plástico: film translúcido */
-  --film-line:#a9b6c4;
-  --muted:#5b5e86;
-  --rule:#d9dbe8;
-  --w-cond:"wdth" 68;
+  --ink:#14164a;
+  --brand:#2e3192;
+  --kraft:#c99c68;
+  --kraft-deep:#7d5629;
+  --paper:#fff;
+  --mist:#f4f4f8;
+  --muted:#5d6085;
+  --rule:#e2e3ee;
+  --plastic:#e6ebf1;
+  --plastic-ink:#4b5a6c;
+  --head:Inter,system-ui,sans-serif;
+  --body:"Roboto Flex",Roboto,system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;font-variation-settings:"wdth" 100}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:350;font-size:1.0625rem;line-height:1.55;overflow-x:clip}
 img,video{display:block;max-width:100%}
 a{color:var(--brand)}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--kraft);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.measure{max-width:38rem}
-h1,h2,h3{font-variation-settings:"wdth" 68;font-weight:800;line-height:1.02;letter-spacing:-.01em;margin:0}
-h2{font-size:clamp(2.1rem,6.4vw,3.6rem);margin-bottom:.5em}
-h3{font-size:clamp(1.5rem,4vw,2rem);font-variation-settings:"wdth" 75;line-height:1.08}
+:focus-visible{outline:3px solid var(--kraft);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);font-weight:800;letter-spacing:-.025em;line-height:1.04;margin:0}
 p{margin:0 0 1em}
-.lead{font-size:clamp(1.15rem,2.6vw,1.35rem);line-height:1.5;color:var(--ink)}
-.small{font-size:.9rem;color:var(--muted)}
-section{padding:72px 0}
+b,strong{font-weight:600}
 
-/* ---------- cinta (el elemento memorable) ---------- */
-.tape{
-  position:relative;height:58px;
-  background:
-    repeating-linear-gradient(62deg,rgba(255,255,255,.22) 0 1px,transparent 1px 15px),
-    repeating-linear-gradient(-62deg,rgba(255,255,255,.22) 0 1px,transparent 1px 15px),
-    repeating-linear-gradient(90deg,rgba(90,60,25,.05) 0 2px,transparent 2px 5px),
-    linear-gradient(180deg,#d3a874,var(--kraft) 45%,#c0915c);
-  clip-path:polygon(0 4%,1.2% 0,2.4% 6%,3.6% 1%,4.8% 5%,6% 0,100% 0,100% 100%,6% 100%,4.8% 95%,3.6% 100%,2.4% 94%,1.2% 100%,0 96%);
-  box-shadow:0 1px 0 rgba(0,0,0,.04);
-  display:flex;align-items:center;overflow:hidden;white-space:nowrap
-}
-.tape span{font-variation-settings:"wdth" 110;font-weight:700;color:rgba(46,49,146,.55);font-size:.95rem;letter-spacing:.02em;padding-left:2.2rem}
-.tape-hero{width:100vw;margin:34px 0 0 calc(50% - 50vw);transform:rotate(-1.6deg);transform-origin:left center}
-html,body{overflow-x:clip}
-@media (prefers-reduced-motion:no-preference){
-  .tape-hero{animation:apply 1.1s cubic-bezier(.2,.7,.1,1) .35s both}
-  @keyframes apply{from{clip-path:polygon(0 0,0 0,0 100%,0 100%)}to{clip-path:polygon(0 4%,1.2% 0,2.4% 6%,3.6% 1%,4.8% 5%,6% 0,100% 0,100% 100%,6% 100%,4.8% 95%,3.6% 100%,2.4% 94%,1.2% 100%,0 96%)}}
-}
-.seal{height:22px;margin:0;width:min(220px,50%)}
-.seal span{display:none}
-
-/* ---------- hero ---------- */
-header.top{padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:16px}
+/* header + hero */
+header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
 header.top img{height:30px;width:auto}
-header.top .for{font-size:.9rem;color:var(--muted);text-align:right}
-.hero{padding:56px 0 64px}
-.hero h1{font-size:clamp(3.3rem,14vw,7.4rem);font-weight:850;line-height:.92;letter-spacing:-.02em;max-width:11ch}
-.hero h1 .quiet{display:block;color:var(--muted);font-weight:500;font-variation-settings:"wdth" 80;font-size:.42em;line-height:1.1;letter-spacing:0;margin-top:.5em;max-width:22ch}
-.hero .lead{margin-top:40px}
+header.top .for{font-size:.88rem;color:var(--muted);text-align:right;line-height:1.35}
+.hero{padding:40px 0 44px}
+.hero h1{font-size:clamp(2.6rem,8.4vw,5.6rem);max-width:13ch}
+.hero h1 span{color:var(--brand)}
+.hero .lead{font-size:clamp(1.12rem,2.4vw,1.35rem);line-height:1.5;max-width:36rem;margin:28px 0 0;font-weight:330}
 
-/* ---------- paradoja ---------- */
-.paradox{border-top:1px solid var(--rule)}
-.paradox .big{font-variation-settings:"wdth" 72;font-weight:700;font-size:clamp(1.7rem,4.8vw,2.7rem);line-height:1.12;max-width:24ch;margin-bottom:.8em}
-.hidden-list{display:grid;gap:14px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.film{background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,0) 40%),var(--film);border:1px solid var(--film-line);border-radius:14px 3px 14px 3px;padding:18px 18px 20px;position:relative}
-.film h3{font-size:1.25rem;font-variation-settings:"wdth" 85;font-weight:700;margin-bottom:.35em;color:#3a4a5e}
-.film p{margin:0;font-size:.95rem;color:#4b5a6c}
-.film.out{background:transparent;border-style:dashed}
+/* banda de video oscura */
+.band{background:var(--ink);color:#fff;padding:28px 0 34px}
+.band .clip{border-radius:6px;overflow:hidden;aspect-ratio:720/282;background:#000}
+.band .clip video{width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+@media(max-width:700px){.band .clip{aspect-ratio:4/3}}
+.band figcaption{color:#c9cae6}
 
-/* ---------- reemplazos ---------- */
-.swap{border-top:1px solid var(--rule);padding:64px 0}
-.swap:first-of-type{border-top:0;padding-top:24px}
-.swap-head{display:grid;gap:10px;margin-bottom:28px}
-.from-to{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:1rem}
-.from{background:var(--film);border:1px solid var(--film-line);color:#3a4a5e;padding:6px 12px;border-radius:999px;text-decoration:line-through;text-decoration-thickness:1.5px;text-decoration-color:#7c8a9a}
-.to{background:var(--kraft);color:#2b1c0c;padding:6px 12px;border-radius:2px;font-weight:600}
-.arrow{color:var(--muted)}
-.swap h3{font-size:clamp(1.9rem,5.4vw,2.9rem);font-variation-settings:"wdth" 68;font-weight:800;line-height:1}
-.swap-body{display:grid;gap:32px}
-@media(min-width:860px){.swap-body{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:start}}
-.cols p{max-width:36rem}
-.swap .intro{max-width:40rem;margin:6px 0 0;font-size:1.1rem}
-dl.facts{margin:0;display:grid;gap:14px}
-dl.facts div{border-left:3px solid var(--kraft);padding-left:14px}
-dt{font-weight:700;font-variation-settings:"wdth" 85}
-dd{margin:2px 0 0;color:#363a72}
-.signals{margin-top:24px;background:#f6f7fb;border-radius:4px;padding:16px 18px}
-.signals strong{display:block;margin-bottom:6px;font-variation-settings:"wdth" 85}
-.signals ul{margin:0;padding-left:1.1em}
-.signals li{margin:.25em 0}
-.media{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
-.media.one{grid-template-columns:1fr}
+/* tag de la cinta */
+.tape{display:inline-block;background:linear-gradient(180deg,#d6ab78,var(--kraft) 55%,#bf8f5a);color:#2b1c0c;font-family:var(--head);font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px 5px 10px;clip-path:polygon(0 8%,3% 0,6% 10%,9% 0,100% 0,100% 100%,9% 100%,6% 90%,3% 100%,0 92%)}
+
+/* secciones de reemplazo */
+.swap{padding:72px 0;border-top:1px solid var(--rule)}
+.swap:first-of-type{border-top:0}
+.kicker{display:flex;align-items:center;gap:12px;margin:0 0 18px;font-family:var(--head);font-weight:700;color:var(--muted);font-size:.95rem}
+.kicker .n{color:var(--kraft-deep)}
+.swap h2{font-size:clamp(1.9rem,5vw,3.1rem);max-width:20ch;margin-bottom:32px}
+.grid{display:grid;gap:28px}
+@media(min-width:880px){.grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:start}}
+.text p{max-width:34rem}
+.call{margin-top:22px;border-left:4px solid var(--kraft);padding:2px 0 2px 16px}
+.call b{display:block;font-family:var(--head);font-weight:700;font-size:.92rem;margin-bottom:2px}
+.call span{color:#363a72}
+
+/* videos */
 figure{margin:0}
-.vid{position:relative;border-radius:6px;overflow:hidden;background:#e9e2d8}
-.vid video{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:var(--pos,50% 50%)}
-.vid.playing video{object-fit:contain;background:#000}
-.media.one .vid video{aspect-ratio:var(--ar)}
-@media(max-width:859px){.swap-body .media{order:-1}}
-.vid .play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border:0;border-radius:50%;background:rgba(28,30,92,.86);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 12px rgba(0,0,0,.25)}
-.vid .play::before{content:"";width:0;height:0;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff;margin-left:5px}
-.vid .play:hover{background:var(--brand)}
-.vid.playing .play{display:none}
-figcaption{font-size:.88rem;color:var(--muted);margin-top:6px;line-height:1.35}
+.clip{position:relative;border-radius:6px;overflow:hidden;background:#d9d2c6}
+.clip video{width:100%;height:auto}
+.vbtn{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(20,22,74,.72);cursor:pointer;display:grid;place-items:center;padding:0}
+.vbtn::before{content:"";width:12px;height:14px;border-left:4px solid #fff;border-right:4px solid #fff;box-sizing:border-box}
+.vbtn.paused::before{width:0;height:0;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff;margin-left:3px}
+.vbtn.big{right:auto;bottom:auto;inset:0;margin:auto;width:64px;height:64px}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:8px;line-height:1.4}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair .label{display:inline-block;margin-bottom:8px;font-family:var(--head);font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px}
+.label.plastic{background:var(--plastic);color:var(--plastic-ink);border:1px solid #b6c2cf;border-radius:999px;text-decoration:line-through;text-decoration-thickness:1.5px}
+.pair .clip video{aspect-ratio:376/470;object-fit:cover}
+.pair figcaption{min-height:2.8em}
+.pair-note{grid-column:1/-1;margin:0;font-size:.86rem;color:var(--muted);line-height:1.4}
 
-/* ---------- prevenir ---------- */
-.prevent{background:var(--ink);color:#fff}
-.prevent h2{color:#fff}
-.prevent .lead{color:#dcdcf0}
-.levers{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:0}
-.levers li{display:grid;gap:4px;padding:18px 0;border-top:1px solid rgba(255,255,255,.18)}
-@media(min-width:760px){.levers li{grid-template-columns:16rem 1fr;gap:24px}}
-.levers b{font-variation-settings:"wdth" 80;font-size:1.2rem;font-weight:700;color:var(--kraft)}
-.levers span{color:#e6e6f4}
+/* dónde no */
+.honest{background:var(--mist);padding:72px 0}
+.honest h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-bottom:12px}
+.honest .intro{color:var(--muted);max-width:34rem}
+.cols3{display:grid;gap:22px;margin-top:30px}
+@media(min-width:880px){.cols3{grid-template-columns:repeat(3,1fr);gap:32px}}
+.cols3 h3{font-size:1.2rem;letter-spacing:-.01em;margin-bottom:.4em}
+.cols3 p{margin:0;color:#363a72}
 
-/* ---------- diagnóstico ---------- */
-.diag .chips{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
-.chip{border:1.5px solid var(--brand);background:#fff;color:var(--brand);font:600 .98rem Archivo,sans-serif;padding:10px 14px;border-radius:999px;cursor:pointer;text-align:left}
-.chip[aria-pressed="true"]{background:var(--brand);color:#fff}
-.answer{min-height:7.5rem;border-left:6px solid var(--kraft);padding:6px 0 6px 18px}
-.answer h3{font-size:1.5rem;margin-bottom:.35em}
-.answer p{max-width:36rem}
-.answer .empty{color:var(--muted)}
-.answer a{font-weight:600}
-
-/* ---------- honestidad ---------- */
-.honest{border-top:1px solid var(--rule)}
-.honest-list{display:grid;gap:22px;margin-top:28px}
-@media(min-width:860px){.honest-list{grid-template-columns:repeat(3,1fr)}}
-.honest-list h3{font-size:1.3rem;font-variation-settings:"wdth" 82;margin-bottom:.4em}
-.honest-list p{font-size:.98rem;color:#363a72;margin:0}
-
-/* ---------- sostener / quiénes ---------- */
-.sustain{background:#f6f7fb}
-.two{display:grid;gap:36px}
-@media(min-width:860px){.two{grid-template-columns:1fr 1fr}}
-.facts-row{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 18px;margin-top:8px}
-.facts-row div{border-top:2px solid var(--brand);padding-top:10px}
-.facts-row b{display:block;font-variation-settings:"wdth" 70;font-size:2.1rem;font-weight:800;line-height:1;color:var(--brand)}
-.facts-row span{font-size:.92rem;color:#363a72}
-.clients{margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 18px}
-.clients div{font-size:.95rem}
-.clients b{display:block;font-size:1.15rem;font-variation-settings:"wdth" 85}
-.clients span{color:var(--muted);font-size:.86rem}
-
-/* ---------- juntos ---------- */
-.steps{counter-reset:s;list-style:none;margin:30px 0 0;padding:0;display:grid;gap:22px}
-@media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
-.steps li{counter-increment:s;padding-top:14px;border-top:3px solid var(--ink)}
-.steps li::before{content:counter(s);font-variation-settings:"wdth" 68;font-weight:850;font-size:2.4rem;line-height:1;display:block;color:var(--kraft-deep);margin-bottom:8px}
-.steps h3{font-size:1.35rem;font-variation-settings:"wdth" 80;margin-bottom:.3em}
+/* juntos */
+.together{padding:80px 0 88px}
+.together h2{font-size:clamp(2.1rem,6vw,3.6rem);max-width:16ch}
+.steps{counter-reset:s;list-style:none;margin:36px 0 0;padding:0}
+@media(min-width:880px){.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}}
+.steps li{counter-increment:s;border-top:3px solid var(--ink);padding:14px 0 22px}
+.steps li::before{content:counter(s);display:block;font-family:var(--head);font-weight:800;font-size:2.2rem;line-height:1;color:var(--kraft-deep);margin-bottom:10px}
+.steps h3{font-size:1.25rem;letter-spacing:-.01em;margin-bottom:.3em}
 .steps p{margin:0;color:#363a72}
-.contact{margin-top:48px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.btn{display:inline-block;text-decoration:none;font-weight:700;padding:14px 20px;border-radius:3px;background:var(--brand);color:#fff}
+.close{margin-top:28px;font-size:1.15rem;max-width:38rem}
+.contact{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-family:var(--head);font-weight:700;padding:15px 22px;border-radius:4px;background:var(--brand);color:#fff}
+.btn:hover{background:var(--ink)}
 .btn.alt{background:#fff;color:var(--brand);box-shadow:inset 0 0 0 2px var(--brand)}
-footer{padding:36px 0 48px;border-top:1px solid var(--rule)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
-footer img{height:24px;width:auto}
+.who{margin-top:14px;color:var(--muted);font-size:.95rem}
+
+footer{border-top:1px solid var(--rule);padding:32px 0 44px}
+footer .wrap{display:grid;gap:14px}
+@media(min-width:880px){footer .wrap{grid-template-columns:auto 1fr;gap:40px;align-items:start}}
+footer img{height:26px;width:auto}
+footer p{margin:0;font-size:.92rem;color:var(--muted);max-width:44rem}
 </style>
 </head>
 <body>
@@ -183,248 +132,140 @@ footer img{height:24px;width:auto}
   </header>
 
   <section class="hero" aria-labelledby="t-hero">
-    <h1 id="t-hero">El plástico que nadie mide<span class="quiet">está en el final de la línea: en la cinta que cierra la caja, el aire que la rellena y el sobre que viaja.</span></h1>
-    <div class="tape tape-hero" aria-hidden="true"><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span><span>ventapel</span></div>
-    <p class="lead measure">Ustedes miden la huella plástica de una empresa y diseñan el cambio. Nosotros trabajamos en el último metro de la operación, donde se cierra, se protege y se despacha cada pedido. Esta página resume qué hacemos, para que la tengan a mano cuando un diagnóstico llegue hasta el depósito.</p>
+    <h1 id="t-hero">El plástico que nadie mide está <span>en el final de la línea.</span></h1>
+    <p class="lead">En la cinta que cierra la caja, el relleno y el sobre de envío. Si un diagnóstico de ustedes llega hasta ahí, tenemos el reemplazo de papel y lo probamos en la línea del cliente.</p>
   </section>
 </div>
 
-<section class="paradox" aria-labelledby="t-paradox">
+<div class="band">
   <div class="wrap">
-    <h2 id="t-paradox" class="big">El final de línea es una parte chica del proceso productivo, pero es todo lo que le llega al cliente.</h2>
-    <p class="measure">Y es donde el plástico descartable se usa sin que nadie lo decida: viene incluido en el hábito de embalar. Cuatro lugares donde suele esconderse:</p>
-    <div class="hidden-list">
-      <div class="film"><h3>Cinta de polipropileno</h3><p>Dos o tres vueltas por caja, para que no se abra. Queda pegada al cartón y complica su reciclado.</p></div>
-      <div class="film"><h3>Almohadas de aire y burbuja</h3><p>El relleno que ocupa el espacio vacío de la caja. Liviano, barato y casi siempre de un solo uso.</p></div>
-      <div class="film"><h3>Sobres plásticos de e-commerce</h3><p>El envase de envío de la mayoría de los pedidos chicos.</p></div>
-      <div class="film out"><h3>Film stretch de pallets</h3><p>También está ahí. Hoy no tenemos un reemplazo que recomendar y preferimos decirlo.</p></div>
-    </div>
+    <figure>
+      <div class="clip"><video data-auto autoplay muted loop playsinline preload="auto" poster="/media/plastico.jpg" aria-label="Un operario cierra una caja con muchas vueltas de cinta plástica roja"><source src="/media/plastico.mp4" type="video/mp4"></video></div>
+      <figcaption>Una sola caja. Todo lo rojo es cinta plástica. Depósito de una marca de indumentaria, Argentina.</figcaption>
+    </figure>
   </div>
-</section>
+</div>
 
-<div class="wrap" id="soluciones">
+<main class="wrap">
 
   <article class="swap" aria-labelledby="t-cinta">
-    <div class="swap-head">
-      <div class="from-to"><span class="from">Cinta plástica</span><span class="arrow" aria-hidden="true">por</span><span class="to">Cinta de papel activada por agua</span></div>
-      <h3 id="t-cinta">Una tira que se vuelve parte de la caja</h3>
-      <p class="intro">La cinta Ventapel es papel engomado: papel kraft con adhesivo a base de almidón y una trama de refuerzo de fibra de vidrio y poliéster. El agua activa el adhesivo, que penetra en la fibra del cartón: la cinta y la caja quedan fundidas. Por eso alcanza con una sola tira donde antes había varias vueltas de plástico.</p>
-    </div>
-    <div class="swap-body">
-      <div class="cols">
-        <dl class="facts">
-          <div><dt>Se recicla con la caja</dt><dd>No hay que despegarla: según el fabricante, las fibras de la cinta se reciclan junto con el cartón. La versión sin refuerzo pasó el protocolo de equivalencia OCC de Western Michigan University.</dd></div>
-          <div><dt>Deja evidencia si la abren</dt><dd>No se despega sin romper la fibra. Menos violaciones y robos significa menos reenvíos, y cada reenvío es otra caja, otro relleno y otro viaje.</dd></div>
-          <div><dt>Se instala sin frenar la línea</dt><dd>Dispensadores manuales y eléctricos para estaciones de trabajo, y selladoras automáticas para líneas de alto volumen.</dd></div>
-          <div><dt>Certificación</dt><dd>Nuestra cinta de papel engomado, fabricada por IPG, tiene certificación Cradle to Cradle Certified® Bronze y se produce con 100% de electricidad renovable. <a href="https://www.itape.com/c2c" target="_blank" rel="noopener">Ver en itape.com</a></dd></div>
-        </dl>
-        <div class="signals"><strong>Cuándo sugerirla</strong>
-          <ul>
-            <li>Cajas cerradas con varias vueltas de cinta transparente o marrón.</li>
-            <li>Reclamos por cajas abiertas, faltantes o robo en tránsito.</li>
-            <li>Cajas de cartón reciclado donde la cinta plástica no agarra bien.</li>
-          </ul>
-        </div>
+    <p class="kicker"><span class="n">01</span> Cinta</p>
+    <h2 id="t-cinta">Una tira de papel en lugar de varias vueltas de plástico.</h2>
+    <div class="grid">
+      <div class="pair">
+        <figure>
+          <span class="label plastic">Cinta plástica</span>
+          <div class="clip"><video data-auto muted loop playsinline preload="none" poster="/media/cinta-plastica.jpg" aria-label="La cinta plástica se despega entera de la caja"><source src="/media/cinta-plastica.mp4" type="video/mp4"></video></div>
+          <figcaption>Se despega entera. La caja se abre y no queda marca.</figcaption>
+        </figure>
+        <figure>
+          <span class="label tape">Cinta de papel</span>
+          <div class="clip"><video data-auto muted loop playsinline preload="none" poster="/media/cinta-papel.jpg" aria-label="Al despegar la cinta de papel se arranca el cartón de la caja"><source src="/media/cinta-papel.mp4" type="video/mp4"></video></div>
+          <figcaption>Para abrirla hay que romper la caja.</figcaption>
+        </figure>
+        <p class="pair-note">Prueba en el centro de distribución de un minorista deportivo, Brasil, julio 2025.</p>
       </div>
-      <div class="media">
-        <figure><div class="vid" style="--ar:356/860"><video playsinline preload="none" poster="/media/inviolable.jpg" aria-label="Intento de abrir una caja cerrada con cinta de papel"><source src="/media/inviolable.mp4" type="video/mp4"></video></div><figcaption>Intento de abrirla: la fibra se rompe y queda la marca.</figcaption></figure>
-        <figure><div class="vid" style="--ar:544/960"><video playsinline preload="none" poster="/media/wat-vs-poli.jpg" aria-label="Test de resistencia: cinta de papel contra cinta plástica"><source src="/media/wat-vs-poli.mp4" type="video/mp4"></video></div><figcaption>Test de resistencia en la apertura: papel contra plástico.</figcaption></figure>
-        <figure><div class="vid" style="--ar:640/352"><video playsinline preload="none" poster="/media/h2o.jpg" aria-label="Selladora automática que cierra cajas con cinta de papel"><source src="/media/h2o.mp4" type="video/mp4"></video></div><figcaption>Selladora automática con cinta de papel.</figcaption></figure>
-        <figure><div class="vid" style="--ar:478/850"><video playsinline preload="none" poster="/media/linea.jpg" aria-label="Línea de despacho de un operador logístico cerrando cajas con cinta de papel"><source src="/media/linea.mp4" type="video/mp4"></video></div><figcaption>Dispensadores en la línea de un operador logístico.</figcaption></figure>
+      <div class="text">
+        <p>La cinta Ventapel es papel engomado. El agua activa un adhesivo de almidón que penetra en el cartón, y la cinta queda fundida con la caja. Por eso alcanza una tira. Y la caja se recicla con la cinta puesta, sin despegarla (según el fabricante, IPG).</p>
+        <p>Además previene. Una caja que se abre sin dejar marca se viola, y cada violación es un reenvío: otra caja, otro relleno, otro viaje.</p>
+        <div class="call"><b>Cuándo llamarnos</b><span>Cajas con varias vueltas de cinta. Reclamos por cajas abiertas o faltantes.</span></div>
       </div>
     </div>
   </article>
 
   <article class="swap" aria-labelledby="t-relleno">
-    <div class="swap-head">
-      <div class="from-to"><span class="from">Almohadas de aire y burbuja</span><span class="arrow" aria-hidden="true">por</span><span class="to">Relleno de papel a demanda</span></div>
-      <h3 id="t-relleno">Solo el papel que la caja necesita</h3>
-      <p class="intro">Las máquinas e-comfill convierten papel en relleno en la misma estación de embalaje, en el momento y en la cantidad que pide cada caja. El papel E-compaper Fill es de fibras recicladas, 100% reciclable y con certificación FSC®. Para objetos frágiles, el E-compaper Wrap en estructura de panal reemplaza al plástico burbuja.</p>
-    </div>
-    <div class="swap-body">
-      <div class="cols">
-        <dl class="facts">
-          <div><dt>Papel con certificación FSC®</dt><dd>Las resmas de papel para relleno vienen de fuentes forestales certificadas.</dd></div>
-          <div><dt>Se dosifica, no se acumula</dt><dd>El relleno se genera a medida: no hay bolsas de almohadas infladas esperando en el depósito.</dd></div>
-          <div><dt>Una máquina para cada ritmo</dt><dd>Desde equipos compactos para estaciones chicas hasta máquinas de alta velocidad para centros de distribución.</dd></div>
-          <div><dt>Permite achicar la caja</dt><dd>El papel en panal protege con menos volumen, y una caja más chica también es menos material.</dd></div>
-        </dl>
-        <div class="signals"><strong>Cuándo sugerirlo</strong>
-          <ul>
-            <li>Almohadas de aire, plástico burbuja o espuma en la mesa de embalaje.</li>
-            <li>Cajas grandes con productos chicos y mucho espacio vacío.</li>
-            <li>Clientes finales que se quejan del plástico al abrir el pedido.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="media">
-        <figure><div class="vid" style="--ar:540/960"><video playsinline preload="none" poster="/media/zfill.jpg" aria-label="Relleno de papel cayendo dentro de una caja"><source src="/media/zfill.mp4" type="video/mp4"></video></div><figcaption>Relleno de papel directo a la caja.</figcaption></figure>
-        <figure><div class="vid" style="--pos:28% 50%"><video playsinline preload="none" poster="/media/relleno-linea.jpg" aria-label="Máquina de relleno de papel en una línea de e-commerce"><source src="/media/relleno-linea.mp4" type="video/mp4"></video></div><figcaption>Relleno de papel en una línea de e-commerce de cosmética.</figcaption></figure>
+    <p class="kicker"><span class="n">02</span> Relleno</p>
+    <h2 id="t-relleno">Solo el papel que cada caja necesita.</h2>
+    <div class="grid">
+      <figure>
+        <div class="clip"><video data-auto muted loop playsinline preload="none" poster="/media/relleno-faro.jpg" aria-label="Se abre una caja con relleno de papel y se saca un faro de auto intacto"><source src="/media/relleno-faro.mp4" type="video/mp4"></video></div>
+        <figcaption>Faro de auto con relleno de papel, después de varias caídas al piso. Prueba en un proveedor automotriz, Brasil, marzo 2026.</figcaption>
+      </figure>
+      <div class="text">
+        <p>Una máquina en la mesa de embalaje convierte papel en relleno en el momento y en la cantidad que pide cada caja. Reemplaza las almohadas de aire y el plástico burbuja.</p>
+        <p>El papel es de fibras recicladas, con certificación FSC®.</p>
+        <div class="call"><b>Cuándo llamarnos</b><span>Almohadas de aire, burbuja o espuma en la mesa. Cajas grandes con productos chicos.</span></div>
       </div>
     </div>
   </article>
 
   <article class="swap" aria-labelledby="t-sobre">
-    <div class="swap-head">
-      <div class="from-to"><span class="from">Sobre plástico de envío</span><span class="arrow" aria-hidden="true">por</span><span class="to">E-combag de papel kraft</span></div>
-      <h3 id="t-sobre">Un sobre de papel que aguanta el viaje, y la vuelta</h3>
-      <p class="intro">Sobres de papel kraft de alta resistencia, 100% reciclables y con certificación FSC®, en distintos tamaños y gramajes. Los fabricamos en nuestra planta de Brasil. La versión "va y viene" tiene doble banda adhesiva: el mismo sobre sirve para el envío y para la devolución.</p>
-    </div>
-    <div class="swap-body">
-      <div class="cols">
-        <dl class="facts">
-          <div><dt>Un envase, dos viajes</dt><dd>La devolución no necesita un envase nuevo.</dd></div>
-          <div><dt>Hecho para la operación</dt><dd>Versión con perforaciones para colgarlos en la estación de embalaje y versión con cierre adhesivo.</dd></div>
-        </dl>
-        <div class="signals"><strong>Cuándo sugerirlo</strong>
-          <ul>
-            <li>E-commerce de indumentaria, calzado, libros o cosmética que despacha en sobre plástico.</li>
-            <li>Marcas con alta tasa de devoluciones.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="media">
-        <figure><div class="vid" style="--ar:848/614"><video playsinline preload="none" poster="/media/ecombag.jpg" aria-label="Sobre de papel cargado con una pesa de 18 kg"><source src="/media/ecombag.mp4" type="video/mp4"></video></div><figcaption>Prueba de carga: el sobre de papel con una pesa de 18 kg.</figcaption></figure>
-        <figure><div class="vid"><video playsinline preload="none" poster="/media/sobre-envio.jpg" aria-label="Sobre de papel antes y después de un envío real"><source src="/media/sobre-envio.mp4" type="video/mp4"></video></div><figcaption>El mismo sobre, después de un envío real.</figcaption></figure>
+    <p class="kicker"><span class="n">03</span> Sobre de envío</p>
+    <h2 id="t-sobre">Un sobre de papel que aguanta 18 kilos.</h2>
+    <div class="grid">
+      <figure>
+        <div class="clip"><video data-auto muted loop playsinline preload="none" poster="/media/sobre.jpg" aria-label="Una pesa de 18 kg dentro de un sobre de papel, que se levanta sin romperse"><source src="/media/sobre.mp4" type="video/mp4"></video></div>
+        <figcaption>Prueba propia: una pesa de 18 kg dentro del sobre.</figcaption>
+      </figure>
+      <div class="text">
+        <p>Sobres de papel kraft con certificación FSC®, fabricados en nuestra planta de Brasil.</p>
+        <p>La versión «va y viene» tiene doble banda adhesiva: el mismo sobre sirve para la devolución.</p>
+        <div class="call"><b>Cuándo llamarnos</b><span>E-commerce de indumentaria, calzado o cosmética que despacha en sobre plástico. Marcas con muchas devoluciones.</span></div>
       </div>
     </div>
   </article>
-</div>
 
-<section class="prevent" aria-labelledby="t-prevent">
-  <div class="wrap">
-    <h2 id="t-prevent">Prevenir antes que sustituir</h2>
-    <p class="lead measure">Coincidimos con ustedes en que cambiar un material por otro no alcanza. Por eso nos importa más lo que cada solución evita que el material del que está hecha.</p>
-    <ul class="levers">
-      <li><b>Menos material por caja</b><span>Una tira de papel reemplaza varias vueltas de cinta plástica.</span></li>
-      <li><b>Menos reenvíos</b><span>Una caja que no se puede abrir sin dejar marca se viola menos. Cada pedido que no se repite es un envío completo que no se genera.</span></li>
-      <li><b>Relleno a medida</b><span>La máquina entrega solo el papel que necesita cada caja.</span></li>
-      <li><b>Un envase para dos viajes</b><span>El sobre "va y viene" resuelve la devolución sin un envase nuevo.</span></li>
-      <li><b>Todo al mismo reciclado</b><span>Caja, cinta y relleno de papel van juntos al reciclado del cartón, sin despegar nada.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="diag" aria-labelledby="t-diag">
-  <div class="wrap">
-    <h2 id="t-diag">¿Qué vieron en la línea de su cliente?</h2>
-    <p class="measure">Tocá lo que encontraron en el diagnóstico y te mostramos qué sugerirle.</p>
-    <div class="chips" role="group" aria-label="Lo que se ve en la línea">
-      <button class="chip" aria-pressed="false" data-k="cinta">Cajas con varias vueltas de cinta</button>
-      <button class="chip" aria-pressed="false" data-k="robo">Reclamos por cajas abiertas o faltantes</button>
-      <button class="chip" aria-pressed="false" data-k="aire">Almohadas de aire o burbuja</button>
-      <button class="chip" aria-pressed="false" data-k="vacio">Cajas grandes con mucho espacio vacío</button>
-      <button class="chip" aria-pressed="false" data-k="sobre">Sobres plásticos de e-commerce</button>
-      <button class="chip" aria-pressed="false" data-k="frio">Cámaras de frío o mucha humedad</button>
-      <button class="chip" aria-pressed="false" data-k="stretch">Film stretch en pallets</button>
-    </div>
-    <div class="answer" aria-live="polite" id="answer"><p class="empty">Elegí una opción para ver la sugerencia.</p></div>
-  </div>
-</section>
+</main>
 
 <section class="honest" aria-labelledby="t-honest">
   <div class="wrap">
     <h2 id="t-honest">Dónde el papel no es la respuesta</h2>
-    <p class="measure">Ustedes auditan alternativas con criterio científico. Así que vale decir también dónde no vamos a recomendar papel.</p>
-    <div class="honest-list">
-      <div><h3>Frío extremo y humedad</h3><p>En cámaras de frío o ambientes muy húmedos la cinta de papel no siempre rinde. Ahí usamos cintas hot melt de alta performance, que siguen siendo plástico. Lo que sí podemos hacer es usar menos.</p></div>
-      <div><h3>Pallets</h3><p>No tenemos hoy un reemplazo para el film stretch que podamos recomendar con datos.</p></div>
-      <div><h3>Sin medición previa</h3><p>No proponemos un cambio sin probarlo antes en la línea del cliente, con sus cajas y su gente. Si el test no cierra, lo decimos.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sustain" aria-labelledby="t-sustain">
-  <div class="wrap two">
-    <div>
-      <h2 id="t-sustain">El cambio dura si cierra en números</h2>
-      <p class="measure">La desplastificación del final de línea se sostiene cuando también mejora la operación. Por eso cada propuesta nuestra arranca con una medición en la planta: tiempo por caja, consumo de material, ergonomía del operador y costo total del cierre, antes y después.</p>
-      <p class="measure">Esos datos se pueden sumar a la medición de huella plástica que hacen ustedes. Y para que el costo de entrada no frene la decisión, las máquinas se pueden instalar en comodato.</p>
-    </div>
-    <div>
-      <h2>Quiénes somos</h2>
-      <p class="measure">Más de 50 años en sistemas de cierre y embalaje de final de línea, con fábricas en Argentina y Brasil y servicio técnico propio. Somos representantes exclusivos de IPG en Brasil, Chile y Argentina.</p>
-      <div class="facts-row">
-        <div><b>2</b><span>fábricas, en Argentina y Brasil</span></div>
-        <div><b>+3.500</b><span>máquinas instaladas en clientes</span></div>
-        <div><b>+200</b><span>clientes en distintas industrias</span></div>
-        <div><b>+5</b><span>países donde operamos</span></div>
-      </div>
-      <div class="clients" aria-label="Algunos clientes del grupo en Argentina y Brasil">
-        <div><b>Mercado Libre</b><span>E-commerce</span></div>
-        <div><b>Andreani</b><span>Logística</span></div>
-        <div><b>Nike</b><span>Deporte</span></div>
-        <div><b>McCain</b><span>Alimentos</span></div>
-        <div><b>Boticário</b><span>Cosmética</span></div>
-        <div><b>MWM</b><span>Industria automotriz</span></div>
-      </div>
+    <p class="intro">Ustedes auditan con criterio. Mejor decirlo antes.</p>
+    <div class="cols3">
+      <div><h3>Frío y humedad</h3><p>En cámaras de frío la cinta de papel no siempre rinde. Ahí usamos hot melt, que es plástico. Lo que sí hacemos es usar menos.</p></div>
+      <div><h3>Pallets</h3><p>No tenemos un reemplazo del film stretch que podamos recomendar con datos.</p></div>
+      <div><h3>La cinta reforzada</h3><p>Lleva una trama de fibra de vidrio y poliéster. Se recicla con la caja, pero no es solo papel.</p></div>
     </div>
   </div>
 </section>
 
 <section class="together" aria-labelledby="t-together">
   <div class="wrap">
-    <h2 id="t-together">Cómo podemos trabajar juntos</h2>
-    <p class="measure">Cuando un diagnóstico de ustedes encuentre plástico en el final de línea:</p>
+    <h2 id="t-together">Si lo ven en un diagnóstico, avísennos.</h2>
     <ol class="steps">
-      <li><h3>Nos avisan</h3><p>Con lo que vieron en la visita alcanza: qué embalan, cuánto y con qué.</p></li>
-      <li><h3>Probamos en la línea</h3><p>Hacemos un test en la planta del cliente, con sus cajas y su equipo, y medimos antes y después.</p></li>
-      <li><h3>Compartimos los números</h3><p>Material evitado, tiempo y costo, en un formato que puedan sumar a su reporte de huella.</p></li>
+      <li><h3>Nos cuentan qué vieron</h3><p>Qué embalan, cuánto y con qué. Con eso alcanza.</p></li>
+      <li><h3>Probamos en la línea</h3><p>Con las cajas y la gente del cliente. Medimos antes y después.</p></li>
+      <li><h3>Les pasamos los números</h3><p>Material que se deja de usar, tiempo y costo, para sumar a su medición de huella.</p></li>
     </ol>
+    <p class="close">El cambio dura si también cierra en números. Si el test no cierra, lo decimos. Y las máquinas pueden ir en comodato, para que la inversión no frene la decisión.</p>
     <div class="contact">
-      <a class="btn" href="https://wa.me/5491140503161?text=Hola%20Tom%C3%A1s%2C%20te%20escribo%20desde%20Unplastify" data-ev="whatsapp">Escribir por WhatsApp</a>
-      <a class="btn alt" href="mailto:tripoll@ventapel.com.br?subject=Unplastify%20%2B%20Ventapel" data-ev="email">Enviar un email</a>
+      <a class="btn" href="https://wa.me/5491140503160?text=Hola%20Tom%C3%A1s%2C%20te%20escribo%20desde%20Unplastify" data-ev="whatsapp">Escribir por WhatsApp</a>
+      <a class="btn alt" href="mailto:tripoll@ventapel.com?subject=Unplastify%20%2B%20Ventapel" data-ev="email">Enviar un email</a>
     </div>
-    <p class="small" style="margin-top:14px">Tomás Ripoll, CEO de Ventapel Brasil. O directamente con Silvana.</p>
+    <p class="who">Tomás Ripoll, Ventapel Brasil. O directamente con Silvana.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <img src="/media/logo-ventapel.png" alt="Ventapel" width="636" height="155">
-    <span class="small"><a href="https://www.ventapel.com.br">ventapel.com.br</a></span>
+    <p>Algunos clientes del grupo en Argentina y Brasil: Mercado Libre, Andreani, Nike, McCain, Boticário y MWM. Fábricas en Argentina y Brasil. Representantes de IPG en Brasil, Chile y Argentina. <a href="https://www.ventapel.com.br">ventapel.com.br</a></p>
   </div>
 </footer>
 
 <script>
 (function(){
-  // Videos: arrancan solo cuando la persona toca play.
-  var vids=[].slice.call(document.querySelectorAll('.vid video'));
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids=[].slice.call(document.querySelectorAll('video[data-auto]'));
+  function ev(name,data){if(window.va)window.va('event',{name:name,data:data});}
   vids.forEach(function(v){
-    var box=v.parentNode, b=document.createElement('button');
-    b.type='button';b.className='play';b.setAttribute('aria-label','Reproducir: '+(v.getAttribute('aria-label')||'video'));
-    box.appendChild(b);
-    b.addEventListener('click',function(){
-      vids.forEach(function(o){if(o!==v&&!o.paused)o.pause();});
-      box.classList.add('playing');v.controls=true;
-      var p=v.play();if(p&&p.catch)p.catch(function(){});
-      if(window.va)window.va('event',{name:'video',data:{video:(v.currentSrc||'').split('/').pop()}});
-    });
-    v.addEventListener('play',function(){vids.forEach(function(o){if(o!==v&&!o.paused)o.pause();});});
-    v.addEventListener('ended',function(){box.classList.remove('playing');v.controls=false;v.load();});
+    v.muted=true;
+    var b=document.createElement('button');b.type='button';b.className='vbtn';
+    v.parentNode.appendChild(b);
+    function sync(){var p=v.paused;b.classList.toggle('paused',p);b.classList.toggle('big',p&&reduce&&!v.dataset.started);b.setAttribute('aria-label',(p?'Reproducir: ':'Pausar: ')+(v.getAttribute('aria-label')||'video'));}
+    v.addEventListener('play',function(){if(!v.dataset.started){v.dataset.started=1;ev('video',{video:(v.currentSrc||'').split('/').pop()});}sync();});
+    v.addEventListener('pause',sync);
+    b.addEventListener('click',function(){if(v.paused){v.dataset.user='';var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.dataset.user='paused';v.pause();}});
+    if(reduce){v.removeAttribute('autoplay');v.pause();}
+    sync();
   });
-
-  // Diagnóstico rápido
-  var A={
-    cinta:['Cinta de papel activada por agua','Una sola tira de cinta Ventapel de papel engomado reemplaza las vueltas de cinta plástica, y la caja se recicla sin despegar nada.','#t-cinta'],
-    robo:['Cinta de papel activada por agua','La cinta de papel no se despega sin romper la fibra: cualquier apertura queda a la vista. Menos violaciones, menos reenvíos.','#t-cinta'],
-    aire:['Relleno de papel a demanda','Una máquina e-comfill en la estación genera el relleno de papel en el momento. Para frágiles, el papel en panal reemplaza al burbuja.','#t-relleno'],
-    vacio:['Relleno a medida y caja más chica','Antes que rellenar, conviene revisar el tamaño de caja. El papel en panal protege con menos volumen, y lo que queda vacío se completa con papel dosificado.','#t-relleno'],
-    sobre:['E-combag de papel kraft','Sobres de papel de alta resistencia, con versión "va y viene" para que la devolución use el mismo envase.','#t-sobre'],
-    frio:['Cinta hot melt, usando menos','Acá el papel no siempre rinde. Recomendamos cintas hot melt de alta performance (siguen siendo plástico) y trabajamos para usar la menor cantidad posible.','#t-honest'],
-    stretch:['Hoy no tenemos una respuesta','No tenemos un reemplazo del film stretch que podamos recomendar con datos. Preferimos decirlo antes que improvisar.','#t-honest']
-  };
-  var chips=[].slice.call(document.querySelectorAll('.chip')),out=document.getElementById('answer');
-  chips.forEach(function(c){c.addEventListener('click',function(){
-    chips.forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false');});
-    var a=A[c.dataset.k];
-    out.innerHTML='<h3></h3><p></p><a></a>';
-    out.querySelector('h3').textContent=a[0];out.querySelector('p').textContent=a[1];
-    var l=out.querySelector('a');l.href=a[2];l.textContent=a[2]==='#t-honest'?'Ver dónde el papel no es la respuesta':'Ver la solución';
-    if(window.va)window.va('event',{name:'diagnostico',data:{opcion:c.dataset.k}});
-  });});
-
-  document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){if(window.va)window.va('event',{name:'contacto',data:{canal:a.dataset.ev}});});});
+  if(!reduce&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+      if(e.isIntersecting){if(v.dataset.user!=='paused'){var p=v.play();if(p&&p.catch)p.catch(function(){});}}else if(!v.paused){v.pause();}
+    });},{threshold:.3});
+    vids.forEach(function(v){io.observe(v);});
+  }
+  document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){ev('contacto',{canal:a.dataset.ev});});});
 })();
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
