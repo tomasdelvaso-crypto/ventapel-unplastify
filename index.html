@@ -96,7 +96,8 @@ figcaption{font-size:.86rem;color:var(--muted);margin-top:8px;line-height:1.4}
 .honest h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-bottom:12px}
 .honest .intro{color:var(--muted);max-width:34rem}
 .cols3{display:grid;gap:22px;margin-top:30px}
-@media(min-width:880px){.cols3{grid-template-columns:repeat(3,1fr);gap:32px}}
+@media(min-width:880px){.cols3{grid-template-columns:repeat(2,minmax(0,22rem));gap:48px}}
+.sub{font-size:clamp(1.4rem,3.4vw,1.9rem);letter-spacing:-.02em;margin:56px 0 24px}
 .cols3 h3{font-size:1.2rem;letter-spacing:-.01em;margin-bottom:.4em}
 .cols3 p{margin:0;color:#363a72}
 
@@ -152,6 +153,18 @@ footer p{margin:0;font-size:.92rem;color:var(--muted);max-width:44rem}
     <p class="kicker"><span class="n">01</span> Cinta</p>
     <h2 id="t-cinta">Una tira de papel en lugar de varias vueltas de plástico.</h2>
     <div class="grid">
+      <figure>
+        <div class="clip"><video data-manual muted playsinline preload="none" poster="/media/cinta-solucion.jpg" aria-label="En el mismo depósito, un operario cierra la caja con cinta de papel"><source src="/media/cinta-solucion.mp4" type="video/mp4"></video></div>
+        <figcaption>El mismo depósito del video de arriba, con cinta de papel.</figcaption>
+      </figure>
+      <div class="text">
+        <p>La cinta Ventapel es papel engomado. El agua activa un adhesivo de almidón que penetra en el cartón, y la cinta queda fundida con la caja. Por eso alcanza una tira.</p>
+        <p>Y la caja se recicla con la cinta puesta, sin despegarla (según el fabricante, IPG).</p>
+        <div class="call"><b>Cuándo llamarnos</b><span>Cajas con varias vueltas de cinta. Reclamos por cajas abiertas o faltantes.</span></div>
+      </div>
+    </div>
+    <h3 class="sub">Además, deja marca.</h3>
+    <div class="grid">
       <div class="pair">
         <figure>
           <span class="label plastic">Cinta plástica</span>
@@ -166,9 +179,8 @@ footer p{margin:0;font-size:.92rem;color:var(--muted);max-width:44rem}
         <p class="pair-note">Prueba en el centro de distribución de un minorista deportivo, Brasil, julio 2025.</p>
       </div>
       <div class="text">
-        <p>La cinta Ventapel es papel engomado. El agua activa un adhesivo de almidón que penetra en el cartón, y la cinta queda fundida con la caja. Por eso alcanza una tira. Y la caja se recicla con la cinta puesta, sin despegarla (según el fabricante, IPG).</p>
-        <p>Además previene. Una caja que se abre sin dejar marca se viola, y cada violación es un reenvío: otra caja, otro relleno, otro viaje.</p>
-        <div class="call"><b>Cuándo llamarnos</b><span>Cajas con varias vueltas de cinta. Reclamos por cajas abiertas o faltantes.</span></div>
+        <p>Una caja que se abre sin dejar rastro se viola. Y cada violación es un reenvío: otra caja, otro relleno, otro viaje.</p>
+        <p>Con la cinta de papel no se puede abrir sin romper la caja. Prevenir el reenvío también es sacar plástico.</p>
       </div>
     </div>
   </article>
@@ -178,8 +190,8 @@ footer p{margin:0;font-size:.92rem;color:var(--muted);max-width:44rem}
     <h2 id="t-relleno">Solo el papel que cada caja necesita.</h2>
     <div class="grid">
       <figure>
-        <div class="clip"><video data-auto muted loop playsinline preload="none" poster="/media/relleno-faro.jpg" aria-label="Se abre una caja con relleno de papel y se saca un faro de auto intacto"><source src="/media/relleno-faro.mp4" type="video/mp4"></video></div>
-        <figcaption>Faro de auto con relleno de papel, después de varias caídas al piso. Prueba en un proveedor automotriz, Brasil, marzo 2026.</figcaption>
+        <div class="clip"><video data-auto muted loop playsinline preload="none" poster="/media/relleno-linea.jpg" aria-label="Máquina de relleno de papel funcionando en una línea de e-commerce"><source src="/media/relleno-linea.mp4" type="video/mp4"></video></div>
+        <figcaption>Prueba en la línea de e-commerce de Grupo Boticário, al lado de la máquina de almohadas de aire. Brasil, abril 2026.</figcaption>
       </figure>
       <div class="text">
         <p>Una máquina en la mesa de embalaje convierte papel en relleno en el momento y en la cantidad que pide cada caja. Reemplaza las almohadas de aire y el plástico burbuja.</p>
@@ -212,7 +224,6 @@ footer p{margin:0;font-size:.92rem;color:var(--muted);max-width:44rem}
     <h2 id="t-honest">Dónde el papel no es la respuesta</h2>
     <p class="intro">Ustedes auditan con criterio. Mejor decirlo antes.</p>
     <div class="cols3">
-      <div><h3>Frío y humedad</h3><p>En cámaras de frío la cinta de papel no siempre rinde. Ahí usamos hot melt, que es plástico. Lo que sí hacemos es usar menos.</p></div>
       <div><h3>Pallets</h3><p>No tenemos un reemplazo del film stretch que podamos recomendar con datos.</p></div>
       <div><h3>La cinta reforzada</h3><p>Lleva una trama de fibra de vidrio y poliéster. Se recicla con la caja, pero no es solo papel.</p></div>
     </div>
@@ -246,22 +257,24 @@ footer p{margin:0;font-size:.92rem;color:var(--muted);max-width:44rem}
 <script>
 (function(){
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var vids=[].slice.call(document.querySelectorAll('video[data-auto]'));
+  var vids=[].slice.call(document.querySelectorAll('video[data-auto],video[data-manual]'));
   function ev(name,data){if(window.va)window.va('event',{name:name,data:data});}
   vids.forEach(function(v){
     v.muted=true;
+    var manual=v.hasAttribute('data-manual');
     var b=document.createElement('button');b.type='button';b.className='vbtn';
     v.parentNode.appendChild(b);
-    function sync(){var p=v.paused;b.classList.toggle('paused',p);b.classList.toggle('big',p&&reduce&&!v.dataset.started);b.setAttribute('aria-label',(p?'Reproducir: ':'Pausar: ')+(v.getAttribute('aria-label')||'video'));}
+    function sync(){var p=v.paused;b.classList.toggle('paused',p);b.classList.toggle('big',p&&(reduce||manual)&&!v.dataset.started);b.setAttribute('aria-label',(p?'Reproducir: ':'Pausar: ')+(v.getAttribute('aria-label')||'video'));}
     v.addEventListener('play',function(){if(!v.dataset.started){v.dataset.started=1;ev('video',{video:(v.currentSrc||'').split('/').pop()});}sync();});
     v.addEventListener('pause',sync);
+    v.addEventListener('ended',function(){v.dataset.started='';v.currentTime=0;sync();});
     b.addEventListener('click',function(){if(v.paused){v.dataset.user='';var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.dataset.user='paused';v.pause();}});
     if(reduce){v.removeAttribute('autoplay');v.pause();}
     sync();
   });
   if(!reduce&&'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
-      if(e.isIntersecting){if(v.dataset.user!=='paused'){var p=v.play();if(p&&p.catch)p.catch(function(){});}}else if(!v.paused){v.pause();}
+      if(e.isIntersecting){if(v.hasAttribute('data-auto')&&v.dataset.user!=='paused'){var p=v.play();if(p&&p.catch)p.catch(function(){});}}else if(!v.paused){v.pause();}
     });},{threshold:.3});
     vids.forEach(function(v){io.observe(v);});
   }
